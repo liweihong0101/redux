@@ -1,9 +1,11 @@
-const reducer = (state = 0, action = {}) => {
+const reducer = (state = {counter: 7, user: {}}, action = {}) => {
     switch (action.type) {
         case "INCREMENT":
-            return state + 1;
+            return Object.assign({}, state, {counter: state.counter + 1});
         case "DECREMENT":
-            return state - 1;
+            return Object.assign({}, state, {counter: state.counter - 1});
+        case "FETCH_USER_SUCCESS":
+            return Object.assign({}, state, {user: action.user})
         default: return state
     }
 }
